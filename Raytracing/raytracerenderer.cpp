@@ -432,19 +432,35 @@ Intersection RayTraceRenderer::SampleLightIBL() const
 	B._pObject = _pLights[0];
 	return B;
 }
+/******************************************************************************/
+/*!
+  \brief
+	Calculate probability density (PDF) given an intersection record for 
+	image based lighting using preprocessed array table
 
+  \param B
+	Intersection record where ray intersect with skydome
+
+  \return pdf
+	The probability 
+*/
+/******************************************************************************/
 float RayTraceRenderer::PdfLightIBL(const Intersection& B) const
 {
 	Vector3f P = B._P.normalized();
-
+	// adjust angle (rotating the texture of skydome)
 	float angle = _angle;
 
 	double fu = (angle - atan2(P[1], P[0])) / (M_PI *2.0);
 	fu = fu - floor(fu); // Wrap to be within 0...1
+	// calculate u v for skydome texture
 	int u = floor(_bkWidth * fu);
 	int v = floor(_bkHeight * acos(P[2]) / M_PI);
+	
 	float angleFrac = M_PI / float(_bkHeight);
 	float* pVDist = &pBuffer[_bkHeight * u];
+
+	// calculate pdf of uv using preprocessed table
 	float pdfU = (u == 0) ? (pUDist[0]) : (pUDist[u] - pUDist[u - 1]);
 	pdfU /= pUDist[_bkWidth - 1];
 	pdfU *= _bkWidth / (M_PI * 2.0);
@@ -452,6 +468,7 @@ float RayTraceRenderer::PdfLightIBL(const Intersection& B) const
 	pdfV /= pVDist[_bkHeight - 1];
 	pdfV *= _bkHeight / M_PI;
 	float theta = angleFrac * 0.5 + angleFrac * v;
+	// using pdf UV to calculate final pdf (the pdf of the pixel to be hit)
 	float pdf = pdfU * pdfV * sin(theta) / (4.0 * M_PI * _radius * _radius);
 	//printf("(%f %f %f) %d %d %g\n", P[0], P[1], P[2], u, v, pdf);
 	return pdf;
