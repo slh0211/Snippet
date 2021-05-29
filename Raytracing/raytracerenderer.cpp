@@ -34,6 +34,7 @@ RayTraceRenderer::RayTraceRenderer()
 	PreProcessCDF();
 
 	_angle = 1.5f;
+	//_radius = 1000.0f;
 	//// sanity check I know how to open, read, write and close hdr file
 	//rgbe_header_info info;
 	//char errbuf[100] = { 0 };
@@ -376,17 +377,26 @@ Color RayTraceRenderer::EvalRadianceIBL(const Intersection& A)
 
 	return r;
 }
-
+/******************************************************************************/
+/*!
+  \brief
+	Pre-process CDF (cumulative density function) into 1d array of pixel radiance
+*/
+/******************************************************************************/
 void RayTraceRenderer::PreProcessCDF()
 {
 	// Pre-processing step: Marginal and conditional CDF
+	// add 1 extra space at the end of each row for total
 	pBuffer = new float[_bkWidth * (_bkHeight + 1)];
 	pUDist = &pBuffer[_bkWidth * _bkHeight];
+	// reserve space for each column's sintheta
 	float* pSinTheta = new float[_bkHeight];
 	float angleFrac = M_PI / float(_bkHeight);
 	float theta = angleFrac * 0.5f;
+	// precalculate fraction between each column and assign to reserved space
 	for (unsigned int i = 0; i < _bkHeight; i++, theta += angleFrac)
 		pSinTheta[i] = sin(theta);
+	// go through each pixel (3 space for rgb) and assigned CDF value
 	for (unsigned int i = 0, m = 0; i < _bkWidth; i++, m += _bkHeight) {
 		float* pVDist = &pBuffer[m];
 		unsigned int k = i * 3;
@@ -401,19 +411,34 @@ void RayTraceRenderer::PreProcessCDF()
 		else
 			pUDist[i] = pUDist[i - 1] + pVDist[_bkHeight - 1];
 	}
-
+	// clean up pSinTheta
+	delete[] pSinTheta;
 }
+/******************************************************************************/
+/*!
+  \brief
+	Randomly select a point from skydome texture for image based lighting
+	using preprocessed table
 
+  \return B
+	The intersection point
+*/
+/******************************************************************************/
 Intersection RayTraceRenderer::SampleLightIBL() const
 {
 	Intersection B;
+	// get random uv
 	double u = getARandomFloat();
 	double v = getARandomFloat();
+	
 	float maxUVal = pUDist[_bkWidth - 1];
+	// use prepocessed table for binaray search to get uv pos on table
+	// use pos to get index of uv
 	float* pUPos = std::lower_bound(pUDist, pUDist + _bkWidth,
 		u * maxUVal);
 	int iu = pUPos - pUDist;
 	float* pVDist = &pBuffer[_bkHeight * iu];
+	
 	float* pVPos = std::lower_bound(pVDist, pVDist + _bkHeight,
 		v * pVDist[_bkHeight - 1]);
 	int iv = pVPos - pVDist;
@@ -427,8 +452,8 @@ Intersection RayTraceRenderer::SampleLightIBL() const
 		sin(theta) * sin(phi),
 		cos(theta));
 
-	//B._P = B._N * radius;
-	B._P = B._N * 1000.0f;
+	B._P = B._N * _radius;
+	//B._P = B._N * 1000.0f;
 	B._pObject = _pLights[0];
 	return B;
 }
