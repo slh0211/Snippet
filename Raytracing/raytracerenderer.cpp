@@ -310,7 +310,21 @@ float RayTraceRenderer::GeometryFactor(const Intersection& A, const Intersection
 
 	return abs(A._N.dot(D) *B._N.dot(D) / (D.dot(D) * D.dot(D)));
 }
+/******************************************************************************/
+/*!
+  \brief
+	Helper function to read HDR image into RayTraceRenderer class
 
+  \param inName
+	File name
+  \param backgroundWidth
+	Pointer to store read-in file's width
+  \param backgroundHeight
+	Pointer to store read-in file's height
+  \return data
+	A dynamic allocated float array to store read-in file
+*/
+/******************************************************************************/
 float* RayTraceRenderer::ReadHdrImage(const std::string inName, int* backgroundWidth, int* backgroundHeight)
 {
 	// Read image header info from file in HDR (a.k.a RADIANCE) format
@@ -347,14 +361,27 @@ float* RayTraceRenderer::ReadHdrImage(const std::string inName, int* backgroundW
 
 	return data;
 }
+/******************************************************************************/
+/*!
+  \brief
+	This function takes an Intersection record and evaluates the radiance
+	based on the Skydome texture for image based lighting
 
+  \param A
+	Intersection record
+  \return r
+	The color where the intersected point should generate
+*/
+/******************************************************************************/
 Color RayTraceRenderer::EvalRadianceIBL(const Intersection& A)
 {
 	Vector3f P = A._P.normalized();
 
 	//float angle = M_PI / float(_bkHeight);
+	// addjust angle
 	float angle = _angle;
 
+	// calculate uv to sample from Skydome texture
 	double u = (angle - atan2(P[1], P[0])) / (M_PI * 2.0);
 	u = u - floor(u);
 	double v = acos(P[2]) / M_PI;
@@ -373,7 +400,6 @@ Color RayTraceRenderer::EvalRadianceIBL(const Intersection& A)
 			}
 		}
 	}
-
 
 	return r;
 }
