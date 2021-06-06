@@ -270,7 +270,15 @@ void RayTraceRenderer::buildBVH()
 {
 	_tree = KdBVH<float, 3, Shape*>(_pShapes.begin(), _pShapes.end());
 }
-
+/******************************************************************************/
+/*!
+  \brief
+	Choose a light source randomly from _pLights
+  
+  \return int
+	Index on _pLights
+*/
+/******************************************************************************/
 int RayTraceRenderer::chooseLight() const
 {
 	if(_pLights.size() == 1)
@@ -278,7 +286,15 @@ int RayTraceRenderer::chooseLight() const
 	
 	return getARandomInt(0, _pLights.size() - 1);
 }
+/******************************************************************************/
+/*!
+  \brief
+	Sample an intersection record from a randomly chosen light sphere.
 
+  \return Intersection
+	An intersection record on the randomly chosen sphere
+*/
+/******************************************************************************/
 Intersection RayTraceRenderer::SampleLight() const
 {
 	int lightIndex = chooseLight();
@@ -287,27 +303,51 @@ Intersection RayTraceRenderer::SampleLight() const
 
 	return s->SampleSphere(s->_center, s->_r);
 }
+/******************************************************************************/
+/*!
+  \brief
+	Calculate Pdf of sphere light for explicit light connection. This function
+	can only be used for sphere light source.
 
+  \param Q
+	intersection record sample from SampleLight function
+
+  \return float
+	The probability of the intersection record on the given light sphere
+*/
+/******************************************************************************/
 float RayTraceRenderer::PdfLight(const Intersection& Q) const
 {
 	Sphere* s = static_cast<Sphere*>(Q._pObject);
 
 
-
+	// Area of the sphere surface
 	float AreaOfLight = 4.0f * M_PI * s->_r * s->_r;
-
 	int NumberOfLights = _pLights.size();
-
-
+	// The probablity of the point to be chose
 	return 1.0f / (AreaOfLight * NumberOfLights);
 }
+/******************************************************************************/
+/*!
+  \brief
+	Convert between angular measue and area measure. This function used with
+	PdfLight when using sphere light as light source for explicit light connection.
 
+  \param A
+	intersection record
+  \param B
+	intersection record
+
+  \return float
+	
+*/
+/******************************************************************************/
 float RayTraceRenderer::GeometryFactor(const Intersection& A, const Intersection& B) const
 {
+	// A and B are two intersection records with points Ap, Bp and normals An, Bn
 	Vector3f D = A._P - B._P;
 
 	//D = D.normalized();
-
 	return abs(A._N.dot(D) *B._N.dot(D) / (D.dot(D) * D.dot(D)));
 }
 /******************************************************************************/
