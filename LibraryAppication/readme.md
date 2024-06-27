@@ -1,0 +1,1 @@
+C# project using WPF application for frontend UI and SQL server for backend database.
