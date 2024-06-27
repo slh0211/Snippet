@@ -1,1 +1,1 @@
-C# project using WPF application for frontend UI and SQL server for backend database.
+C# project using WPF application for frontend UI and SQL Server for backend database.
