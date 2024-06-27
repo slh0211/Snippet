@@ -1,0 +1,13 @@
+﻿<Window x:Name="LibrarySystem" x:Class="ListNavigationDebug.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="500" Width="885"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Title="Library System" Icon="Resource/Sidebar-Library-icon.png" Closing="Window_Closing">
+    <Window.Resources>
+        <BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="J:\LibraryAppication\ListNavigationDebug\Resource\1407740264_library.png"/>
+    </Window.Resources>
+    <DockPanel>
+        <Frame x:Name="_mainFrame" NavigationUIVisibility="Hidden"></Frame>
+    </DockPanel>
+</Window>

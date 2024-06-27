@@ -1,0 +1,142 @@
+Magellan Changelog:
+--------------------------------------
+
+Below are the key highlights of changes that have been made to Magellan. See the subversion repository for a 
+detailed history and prior versions (http://code.google.com/p/magellan-framework/source/checkout). 
+
+2011-02-01:
+  - Support for nested INavigators and navigator state
+  - NuGet package
+
+2010-08-31: 
+  - Published a RubyGem - http://rubygems.org/gems/magellan-framework
+
+2010-08-21:
+  - Out of the box support for Data Annotations in Magellan Forms.
+  - .NET 4.0 client profile compatability.
+  - Zones are now freezables rather than ContentControls, to keep things lighter and have less visual tree 
+    wierdness.
+
+2008-08-05:
+  - RedirectResult and BackResult use dispatcher, so they'll work with AsyncController now
+  - Extensions will now be packaged into their own project
+
+2008-07-28:
+  - Moved to Google Code (http://code.google.com/p/magellan-framework)
+
+2010-06-04:
+  - Split RouteCollection into RouteResolver and RouteCatalog, to make creating a set of routes with the same 
+    handler much easier.
+  - Enabled ability to navigate using a lambda expression - e.g.,:
+      Navigator.Navigate<PatientController>(x => x.Search("Hello"));
+    Which is the same as:
+      Navigator.Navigate(new {controller = "Patient", action = "Search", text = "Hello"});
+
+2010-06-02:
+  - NavigateCommand has been removed. Views or view models should implement INavigationAware, or the Blend 
+    NavigateAction should be used.
+
+2010-05-30:
+  - Routing and the NavigatorFactory now take centre stage.
+  - Better support for multiple frames of navigation.
+  - Exceptions thrown by controllers are no longer wrapped by UnhandledActionException. However, async 
+    requests (with AsyncActionInvoker) will still be wrapped to allow the exception to dispatch onto the UI 
+    thread.
+  - Models are passed direct to action results (e.g., return Page("MyPage", new FooModel())) rather than 
+    using a Model property.
+
+2010-05-02:
+  - Introduced a routing engine, similar to ASP.NET MVC's
+
+2010-02-20:
+  - Introduced a dynamic data inspired Forms system. See this page for details:
+    http://www.paulstovell.com/magellan-forms
+
+2010-02-19:
+  - Bug fix: Zones in a shared layout can now contain element bindings (a bug with name scoping previously 
+    prevented this)
+  - Bug fix: Model binders now resolve derived types (e.g., you can register a model binder for IFoo, and it 
+    will be resolved for Foo)
+
+2010-01-28:
+  - Initial Silverlight port (Silverlight support is still experimental)
+  - Controller methods are all virtual
+
+2010-01-26:
+  - Migration to CodePlex.
+  - Introduced NavigateWithTransitionAction, as an alternative to the behavior (via Caleb Vear).
+  - Introduced an IViewNamespaceProvider interface, to encapsulate project structure conventions from view 
+    engines (via Caleb Vear).
+  - Behaviors are now [Obsolete], please switch to the trigger actions instead. I plan to delete the 
+    behaviors in a few months. 
+
+2010-01-15:
+  - Added a strong name key
+
+2010-01-03:
+  - Changed Zone.ZoneName to Zone.ZonePlaceHolderName, and ZonePlaceHolder.ZoneName to ZonePlaceHolder.Name
+  - Enabled nested layouts - see http://www.paulstovell.com/magellan-shared-layouts for details.
+    
+2010-01-01:
+  - Added Master Page support
+  - Fixed a bug to do with parameter evaluation in the Navigate behavior
+  - Added a "Wizard" sample
+
+2009-12-30:
+  - Added deeper tracing support. See this post for more details: 
+    http://www.paulstovell.com/magellan-diagnostics
+
+2009-12-29:
+  - Implemented support for asynchronous controllers.
+  - Changed how controller factories are implemented to make disposal/release management easier when custom
+    factories are used.
+
+2009-12-22:
+  - Added the INavigationAware interface, which can be implemented by views and models that wish to know 
+    about the current navigation request.
+  - Reusing the logic in ViewEngineResult-derived classes for WPF by creating a base class called
+    FrameworkElementViewEngineResult.
+
+2009-12-21:
+  - Changes to how prefixes/suffixes are added to views in the ReflectionBasedViewEngine. 
+
+2009-12-11:
+  - When returning a Page() result from a Controller, an additional overload is now the ability to reset 
+    navigation history (clearing all 'Back' entries from the navigation journal).
+  - Instead of throwing a NavigationException and relying on the message, NavigationException is now abstract 
+    and all exceptions derive from it. Existing exception handling code should still work but you can also 
+    now handle more explicit exceptions - e.g., ActionNotFoundException, ViewNotFoundException, 
+    UnhandledActionInvocationException, and so on.
+
+2009-12-09:
+  - Fixed a bug in RedirectResult where it always used Navigator.Default rather than the navigator serving 
+    the request.
+  - Added a lot of tests; Magellan now has 100% coverage.
+  - Added a 'return StartProcess("calc.exe")' for controllers, with the optional ability to wait for the 
+    process to exit.
+
+2009-12-07:
+  - Implemented support for result filters.
+  - Cleaned up action filter API.
+
+2009-12-05:
+  - Changed "View()" to "Window()", "Page()" and "Dialog()" to make controller returns more clear. 
+    See this page for details: http://www.paulstovell.com/magellan-view-return-values.
+  - Included XML comments in builds.
+  - Corrected the project template so that dependencies are only copied if requested.
+
+2009-11-27:
+  - Added a 'Back()' action result which allows controllers to return to the previous page. 
+
+2009-11-15:
+  - Created an MSI and project templates.
+  - Introduced this changelog.
+
+2009-11-14:
+  - XAML namespace has been changed from http://magellan-project.org to http://xamlforge.com/magellan - I did 
+    not realise this domain was taken.
+  - Navigation requests don't require a navigation service.
+  - Navigation requests now have ActionParameters and ContextParameters. ActionParameters are for the action 
+    method arguments, and ContextParameters
+    are used by the navigation infrastructure.
+  - Transitions have been moved to a different library.

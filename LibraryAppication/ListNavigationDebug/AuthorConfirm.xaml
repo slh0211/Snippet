@@ -1,0 +1,23 @@
+﻿<Page x:Class="ListNavigationDebug.AuthorConfirm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="885"
+	Title="AuthorConfirm">
+
+    <Grid Background="#FFBED7D9">
+        <Label x:Name="ErrorMessageLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="430,32,0,0" FontSize="20"/>
+        <Label Content="Last Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="280,78,0,0" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <Label Content="First Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="485,78,0,0" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <Label Content="Bio" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="280,155,0,0" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <Label Content="Author Add Confirm" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Segoe UI Semibold"/>
+        
+        <TextBox x:Name="LastNameTextBox" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="280,115,0,0" FontSize="14" IsEnabled="False"/>
+        <TextBox x:Name="FirstNameTextBox" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="485,115,0,0" FontSize="14" IsEnabled="False"/>
+        <TextBox x:Name="BioTextBox" HorizontalAlignment="Left" Height="100" TextWrapping="Wrap" VerticalAlignment="Top" Width="325" Margin="280,192,0,0" FontSize="14" IsEnabled="False"/>
+        <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="343,323,0,0" Click="confirmButton_Click" FontSize="20" FontFamily="Segoe UI Semibold"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="343,373,0,0" Command="{x:Static NavigationCommands.BrowseBack}" FontSize="20" FontFamily="Segoe UI Semibold"/>
+    </Grid>
+</Page>

@@ -1,0 +1,37 @@
+﻿<Page x:Class="ListNavigationDebug.ListCardholders"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="885"
+	Title="ListCardholders">
+
+    <Grid Background="#FFBED7D9">
+        <Label Content="Cardholders" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Segoe UI Semibold"/>
+        
+        <ListView x:Name="CardholdersListView" HorizontalAlignment="Left" Height="145" VerticalAlignment="Top" Width="568" Margin="31,73,0,0" FontSize="14" ItemsSource="{Binding}" SelectionChanged="cardholdersListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Person ID" Width="100" DisplayMemberBinding="{Binding Path=PersonID}"/>
+                    <GridViewColumn Header="Last Name" Width="120" DisplayMemberBinding="{Binding Path=LastName}"/>
+                    <GridViewColumn Header="First Name" Width="120" DisplayMemberBinding="{Binding Path=FirstName}"/>
+                    <GridViewColumn Header="Library Card ID" Width="120" DisplayMemberBinding="{Binding Path=LibraryCardID}"/>
+                    <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding Path=Phone}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="CheckOutLogsListView" HorizontalAlignment="Left" Height="136" VerticalAlignment="Top" Width="678" Margin="31,242,0,0" FontSize="14" ItemsSource="{Binding}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Book ID" Width="100" DisplayMemberBinding="{Binding Path=BookID}"/>
+                    <GridViewColumn Header="ISBN" Width="120" DisplayMemberBinding="{Binding Path=CheckedOutBook.ISBN}"/>
+                    <GridViewColumn Header="Title" Width="200" DisplayMemberBinding="{Binding Path=CheckedOutBook.Title}"/>
+                    <GridViewColumn Header="Check Out Date" Width="150" DisplayMemberBinding="{Binding Path=CheckOutDateShort}"/>
+                    <GridViewColumn Header="Overdue" Width="100" DisplayMemberBinding="{Binding Path=Overdue}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="31,394,0,0" Command="{x:Static NavigationCommands.BrowseBack}" FontSize="20" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
+    </Grid>
+</Page>

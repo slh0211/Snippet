@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA6068AB-902D-41E2-87FE-60A518393169}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ListNavigationDebug</RootNamespace>
+    <AssemblyName>ListNavigationDebug</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AuthorAdd.xaml.cs">
+      <DependentUpon>AuthorAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorConfirm.xaml.cs">
+      <DependentUpon>AuthorConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorVerify.xaml.cs">
+      <DependentUpon>AuthorVerify.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookAdd.xaml.cs">
+      <DependentUpon>BookAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookAddConfirm.xaml.cs">
+      <DependentUpon>BookAddConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookAddRemove.xaml.cs">
+      <DependentUpon>BookAddRemove.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookAddRemoveConfirm.xaml.cs">
+      <DependentUpon>BookAddRemoveConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookDetail.xaml.cs">
+      <DependentUpon>BookDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookEdit.xaml.cs">
+      <DependentUpon>BookEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookEditConfirm.xaml.cs">
+      <DependentUpon>BookEditConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CheckInOut.xaml.cs">
+      <DependentUpon>CheckInOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CloseDialog.xaml.cs">
+      <DependentUpon>CloseDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ISBNVerify.xaml.cs">
+      <DependentUpon>ISBNVerify.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LibraryUtility.cs" />
+    <Compile Include="ListAuthors.xaml.cs">
+      <DependentUpon>ListAuthors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListCardholders.xaml.cs">
+      <DependentUpon>ListCardholders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListLibrarians.xaml.cs">
+      <DependentUpon>ListLibrarians.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListOverdues.xaml.cs">
+      <DependentUpon>ListOverdues.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListsMenu.xaml.cs">
+      <DependentUpon>ListsMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mode.cs" />
+    <Compile Include="SearchMenu.xaml.cs">
+      <DependentUpon>SearchMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchMethods.cs" />
+    <Page Include="AuthorAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorConfirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorVerify.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookAddConfirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookAddRemove.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookAddRemoveConfirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookEditConfirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CheckInOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CloseDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ISBNVerify.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibrarianMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListAuthors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListCardholders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListLibrarians.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListOverdues.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListsMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Author.cs">
+      <DependentUpon>LAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Book.cs">
+      <DependentUpon>LAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cardholder.cs">
+      <DependentUpon>LAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CheckOutLog.cs">
+      <DependentUpon>LAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LAModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LAModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LAModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LAModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LAModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Librarian.cs">
+      <DependentUpon>LAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarianMenu.xaml.cs">
+      <DependentUpon>LibrarianMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="SearchMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Person.cs">
+      <DependentUpon>LAModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="LAModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LAModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LAModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LAModel.edmx</DependentUpon>
+      <LastGenOutput>LAModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="LAModel.edmx.diagram">
+      <DependentUpon>LAModel.edmx</DependentUpon>
+    </None>
+    <None Include="LAModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LAModel.edmx</DependentUpon>
+      <LastGenOutput>LAModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibrarySystemClasses\LibrarySystemClasses.csproj">
+      <Project>{5b884cca-d427-4a1f-b55e-d77785063c9c}</Project>
+      <Name>LibrarySystemClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Sidebar-Library-icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

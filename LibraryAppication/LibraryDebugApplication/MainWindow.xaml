@@ -1,0 +1,33 @@
+﻿<Window x:Class="LibraryDebugApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="810.711">
+    <Grid Background="#FFBED7D9">
+        <ListBox x:Name="PersonListBox" Height="245" Margin="27,47,0,0" VerticalAlignment="Top" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="161">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Display}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="BookListBox" Height="245" Margin="220,47,0,0" VerticalAlignment="Top" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="161">
+        </ListBox>
+        <ListBox x:Name="CheckOutLogListBox" Height="245" Margin="415,47,0,0" VerticalAlignment="Top" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="357">
+        </ListBox>
+        <Label Content="Person" HorizontalAlignment="Left" Margin="27,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Book" HorizontalAlignment="Left" Margin="220,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="CheckOutLog" HorizontalAlignment="Left" Margin="415,16,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="PersonIDLabel"  HorizontalAlignment="Left" Margin="150,16,0,0" VerticalAlignment="Top">
+            <Binding ElementName="PersonListBox" Path="SelectedItem.PersonID"/>
+        </Label>
+        <Label x:Name="BookID" HorizontalAlignment="Left" Margin="343,16,0,0" VerticalAlignment="Top">
+            <Binding ElementName="BookListBox" Path="SelectedItem.BookID"/>
+        </Label>
+        <Label x:Name="CheckOutLogID" HorizontalAlignment="Left" Margin="734,16,0,0" VerticalAlignment="Top">
+            <Binding ElementName="CheckOutLogListBox" Path="SelectedItem.CheckOutLogID"/>
+        </Label>
+
+    </Grid>
+</Window>

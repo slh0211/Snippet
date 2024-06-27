@@ -1,0 +1,11 @@
+﻿<Window x:Class="ListNavigationDebug.CloseDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Library System" Height="148.615" Width="305.538" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Icon="Resource/Sidebar-Library-icon.png">
+    <Grid Background="#FFBED7D9">
+        <Button x:Name="YesButton" Content="Yes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="54,70,0,0" FontSize="20" FontFamily="Segoe UI Semibold" IsDefault="True" Click="yesButton_Click"/>
+        <Button x:Name="NoButton" Content="No" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" FontSize="20" FontFamily="Segoe UI Semibold" Margin="170,70,0,0" IsCancel="True"/>
+        <Label Content="Do you want to exit the application?" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,25,0,0" FontSize="16"/>
+
+    </Grid>
+</Window>

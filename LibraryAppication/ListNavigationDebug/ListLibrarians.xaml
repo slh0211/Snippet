@@ -1,0 +1,24 @@
+﻿<Page x:Class="ListNavigationDebug.ListLibrarians"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="885"
+	Title="ListLibrarians">
+
+    <Grid Background="#FFBED7D9">
+        <Label Content="Librarians" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Segoe UI Semibold"/>
+        <ListView x:Name="LibrariansListView" HorizontalAlignment="Left" Height="229" VerticalAlignment="Top" Width="448" Margin="31,73,0,0" FontSize="14" ItemsSource="{Binding}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Person ID" Width="100" DisplayMemberBinding="{Binding Path=PersonID}"/>
+                    <GridViewColumn Header="Last Name" Width="120" DisplayMemberBinding="{Binding Path=LastName}"/>
+                    <GridViewColumn Header="First Name" Width="120" DisplayMemberBinding="{Binding Path=FirstName}"/>
+                    <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding Path=Phone}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="31,394,0,0" Command="{x:Static NavigationCommands.BrowseBack}" FontSize="20" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
+    </Grid>
+</Page>

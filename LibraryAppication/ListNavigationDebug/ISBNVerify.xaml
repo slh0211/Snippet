@@ -1,0 +1,18 @@
+﻿<Page x:Class="ListNavigationDebug.ISBNVerify"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="885"
+	Title="ISBNVerify">
+
+    <Grid Background="#FFBED7D9">
+        <ComboBox x:Name="BooksComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="343,140,0,0" IsEditable="True" ItemsSource="{Binding}" DisplayMemberPath="DisplayISBNTitle" FontSize="14"/>
+        <Button x:Name="AddRemoveButton" Content="Select" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="569,140,0,0" Click="addRemoveButton_Click" FontSize="20" FontFamily="Segoe UI Semibold" Height="32.8"/>
+        <Button x:Name="NewBookButton" Content="Add a New Book" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="343,230,0,0" Click="newBookButton_Click" FontSize="20" Height="32.8" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="ErrorMessageLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="430,32,0,0" FontSize="20"/>
+        <Button x:Name="LibrarianMenuButton" Content="Librarian Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="343,280,0,0" Click="librarianMenuButton_Click" FontSize="20" Height="32.8" FontFamily="Segoe UI Semibold"/>
+        <Label Content="Add/Remove Menu" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Segoe UI Semibold"/>
+    </Grid>
+</Page>
